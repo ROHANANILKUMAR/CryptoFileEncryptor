@@ -1,0 +1,106 @@
+﻿<Window x:Class="FileEncryptionServices.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileEncryptionServices"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Crypto" Height="434.424" Width="942.105" Background="White" Topmost="False" WindowStartupLocation="CenterScreen" Closing="Close">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="936">
+            <MenuItem Header="Default Password" Click="DefaultPassword_Click"/>
+            <MenuItem Header="Credits" Click="Credits_Click"/>
+        </Menu>
+
+        <Border BorderBrush="Black" BorderThickness="3" Height="234" Margin="194,25,8,0" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Left" Height="216" Margin="5,5,0,0" VerticalAlignment="Top" Width="712">
+                <Grid x:Name="IntroGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Visible" Background="LightGray">
+                    <TextBlock x:Name="MainIntro" HorizontalAlignment="Center" Margin="89,74,121,0" TextWrapping="Wrap" Text="CRYPTO ENCRYPTOR"  VerticalAlignment="Top" Height="70" Width="502" FontSize="48" FontWeight="Bold" FontFamily="Showcard Gothic"/>
+
+                </Grid>
+                <Grid x:Name="FileEncGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Hidden">
+                    <Label x:Name="IntroFE" Content="File Encryption"  HorizontalContentAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Width="692"/>
+                    <TextBlock x:Name="FileNamelabelEnc" HorizontalAlignment="Left" Margin="15,70,0,0" TextWrapping="Wrap" Text="Selected File: " VerticalAlignment="Top" Height="21"/>
+                    <TextBlock x:Name="FileEncNameDisplay" HorizontalAlignment="Left" Margin="158,75,0,0" TextWrapping="Wrap" Text="Not Selected" VerticalAlignment="Top" Height="21" Width="544"/>
+                    <TextBlock x:Name="PassLabelEnc" HorizontalAlignment="Left" Margin="15,96,0,0" TextWrapping="Wrap" Text="Password For Encryption:" VerticalAlignment="Top" Height="20" Width="139"/>
+                    <PasswordBox x:Name="FileEncryptionPassword" HorizontalAlignment="Left" Height="23" Margin="158,101,0,0" VerticalAlignment="Top" Width="539"/>
+                    <CheckBox x:Name="CheckFileEnc" Content="Keep Original File" HorizontalAlignment="Left" Margin="158,129,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="IntroFileEnc" HorizontalAlignment="Left" Margin="15,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="692" Background="#FFE4E4E4"><Run Text="Encrypts a file with a given password."/><LineBreak/><Run Text="The file can only be opened after decryption using the given password."/><LineBreak/><Run Text=" "/></TextBlock>
+                    <Button x:Name="EncryptFile" Content="Encrypt" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" Width="75" Click="EncryptFile_Click"/>
+                </Grid>
+                <Grid x:Name="FileDecGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Hidden">
+                    <Label x:Name="IntroFD" Content="File Decryption"  HorizontalContentAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Width="692"/>
+                    <TextBlock x:Name="FileNamelabelDec" HorizontalAlignment="Left" Margin="15,70,0,0" TextWrapping="Wrap" Text="Selected File: " VerticalAlignment="Top" Height="21"/>
+                    <TextBlock x:Name="FileDecNameDisplay" HorizontalAlignment="Left" Margin="158,75,0,0" TextWrapping="Wrap" Text="Not Selected" VerticalAlignment="Top" Height="21" Width="544"/>
+                    <TextBlock x:Name="PassLabelDec" HorizontalAlignment="Left" Margin="15,96,0,0" TextWrapping="Wrap" Text="Password For Decryption:" VerticalAlignment="Top" Height="20" Width="139"/>
+                    <PasswordBox x:Name="FileDecryptionPassword" HorizontalAlignment="Left" Height="23" Margin="159,96,0,0" VerticalAlignment="Top" Width="539"/>
+                    <CheckBox x:Name="CheckFileDec" Content="Keep Original Encrypted File" HorizontalAlignment="Left" Margin="158,129,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="IntroFileDec" HorizontalAlignment="Left" Margin="15,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="692" Background="#FFE4E4E4"><Run Text="Decrypts a file with the password used for encryption.."/><LineBreak/><Run Text=" "/></TextBlock>
+                    <Button x:Name="DecryptFile" Content="Decrypt" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" Width="75" Click="DecryptFile_Click"/>
+                    <Button x:Name="NewLocation" Content="Decrypt to new location" HorizontalAlignment="Left" Margin="436,168,0,0" VerticalAlignment="Top" Width="136" Click="NewLocation_Click"/>
+                </Grid>
+                <Grid x:Name="FolderEncGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Hidden">
+                    <Label x:Name="IntroFolEnc" Content="Folder Encryption"  HorizontalContentAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Width="692"/>
+                    <TextBlock x:Name="FolderNamelabelEnc" HorizontalAlignment="Left" Margin="15,70,0,0" TextWrapping="Wrap" Text="Selected Folder: " VerticalAlignment="Top" Height="21" Width="120"/>
+                    <TextBlock x:Name="FolderEncNameDisplay" HorizontalAlignment="Left" Margin="163,70,0,0" TextWrapping="Wrap" Text="Not Selected" VerticalAlignment="Top" Height="21" Width="544"/>
+                    <TextBlock x:Name="FolderPassLabelEnc" HorizontalAlignment="Left" Margin="15,96,0,0" TextWrapping="Wrap" Text="Password For Encryption:" VerticalAlignment="Top" Height="20" Width="139"/>
+                    <PasswordBox x:Name="FolderEncryptionPassword" HorizontalAlignment="Left" Height="23" Margin="159,96,0,0" VerticalAlignment="Top" Width="539"/>
+                    <TextBlock x:Name="IntroFolderEnc" HorizontalAlignment="Left" Margin="15,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="692" Background="#FFE4E4E4" Text="Encrypts the contents of a file with a password so that it can only accessed with the password."/>
+                    <Button x:Name="EncryptFolder" Content="Encrypt" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" Width="75" Click="EncryptFolder_Click"/>
+                </Grid>
+                <Grid x:Name="FolderDecGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Hidden">
+                    <Label x:Name="IntroFolDec" Content="Folder Decryption"  HorizontalContentAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Width="692"/>
+                    <TextBlock x:Name="FolderNamelabelDec" HorizontalAlignment="Left" Margin="15,70,0,0" TextWrapping="Wrap" Text="Selected Folder: " VerticalAlignment="Top" Height="21" Width="120"/>
+                    <TextBlock x:Name="FolderDecNameDisplay" HorizontalAlignment="Left" Margin="163,70,0,0" TextWrapping="Wrap" Text="Not Selected" VerticalAlignment="Top" Height="21" Width="544"/>
+                    <TextBlock x:Name="FolderPassLabelDec" HorizontalAlignment="Left" Margin="15,96,0,0" TextWrapping="Wrap" Text="Password For Decryption:" VerticalAlignment="Top" Height="20" Width="139"/>
+                    <PasswordBox x:Name="FolderDecryptionPassword" HorizontalAlignment="Left" Height="23" Margin="159,96,0,0" VerticalAlignment="Top" Width="539"/>
+                    <TextBlock x:Name="IntroFolderDec" HorizontalAlignment="Left" Margin="15,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="692" Background="#FFE4E4E4" Text="Decrypts the encrypted files of a  folder."/>
+                    <Button x:Name="DecryptFolder" Content="Decrypt" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" Width="75" Click="DecryptFolder_Click"/>
+                </Grid>
+                <Grid x:Name="DriveEncGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Hidden">
+                    <Label x:Name="IntroDriveEnc" Content="Drive Encryption"  HorizontalContentAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Width="692"/>
+                    <TextBlock x:Name="DriveNamelabelEnc" HorizontalAlignment="Left" Margin="15,70,0,0" TextWrapping="Wrap" Text="Selected Drive: " VerticalAlignment="Top" Height="21" Width="120"/>
+
+                    <TextBlock x:Name="DrivePassLabelEnc" HorizontalAlignment="Left" Margin="15,128,0,0" TextWrapping="Wrap" Text="Password For Encryption:" VerticalAlignment="Top" Height="20" Width="139"/>
+                    <PasswordBox x:Name="DriveEncryptionPassword" HorizontalAlignment="Left" Height="23" Margin="159,125,0,0" VerticalAlignment="Top" Width="539"/>
+                    <TextBlock x:Name="DriveIntroEnc" HorizontalAlignment="Left" Margin="15,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="692" Background="#FFE4E4E4"><Run Text="Encrypts the contents of a Drive with a password so that it can only accessed with the password."/><LineBreak/><Run Text="This may take time."/></TextBlock>
+                    <Button x:Name="EncryptDrive" Content="Encrypt" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" Width="75" Click="EncryptDrive_Click"/>
+                    <ScrollViewer HorizontalAlignment="Left" Height="55" Margin="159,65,0,0" VerticalAlignment="Top" Width="100">
+                        <ListBox x:Name="DriveEncryptionListBox" HorizontalAlignment="Left" MinHeight="50" VerticalAlignment="Top" Width="100" Height="55"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="DriveDecGrid"  HorizontalAlignment="Left" Height="216" VerticalAlignment="Top" Width="712" Visibility="Hidden">
+                    <Label x:Name="IntroDriveDec" Content="Drive Decryption"  HorizontalContentAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" Width="692"/>
+                    <TextBlock x:Name="DriveNamelabelDec" HorizontalAlignment="Left" Margin="15,70,0,0" TextWrapping="Wrap" Text="Selected Drive: " VerticalAlignment="Top" Height="21" Width="120"/>
+
+                    <TextBlock x:Name="DrivePassLabelDec" HorizontalAlignment="Left" Margin="15,128,0,0" TextWrapping="Wrap" Text="Password For Decryption:" VerticalAlignment="Top" Height="20" Width="139"/>
+                    <PasswordBox x:Name="DriveDecryptionPassword" HorizontalAlignment="Left" Height="23" Margin="159,125,0,0" VerticalAlignment="Top" Width="539"/>
+                    <TextBlock x:Name="DriveIntroDec" HorizontalAlignment="Left" Margin="15,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="692" Background="#FFE4E4E4"><Run Text="Decrypts the contents of a Drive with the password used for encryption"/><LineBreak/><Run Text="This may take time."/></TextBlock>
+                    <Button x:Name="DecryptDrive" Content="Decrypt" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" Width="75" Click="DecryptDrive_Click"/>
+                    <ScrollViewer HorizontalAlignment="Left" Height="55" Margin="159,65,0,0" VerticalAlignment="Top" Width="100">
+                        <ListBox x:Name="DriveDecryptionListBox" HorizontalAlignment="Left" MinHeight="50" VerticalAlignment="Top" Width="100" Height="55"/>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <RichTextBox x:Name="CryptStatus" HorizontalAlignment="Left" Height="127" FontSize="12" Block.LineHeight="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" VerticalAlignment="Top" MinWidth="732" Margin="194,264,0,0" Width="734"/>
+        <Border Margin="10,25,747,14" BorderBrush="Black" BorderThickness="3">
+            <Grid HorizontalAlignment="Left" Height="376" Margin="-1,-3,-3,-18" VerticalAlignment="Top" Width="177">
+                <Button x:Name="FileEnc" Content="Encrypt File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="138" Height="33" Click="FileEnc_Click" />
+                <Button x:Name="FileDec" Content="Decrypt File" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="138" Height="33" Click="FileDec_Click" />
+                <Button x:Name="FolderEnc" Content="Encrypt Folder" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="138" Height="33" Click="FolderEnc_Click" />
+                <Button x:Name="FolderDec" Content="Decrypt Folder" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Width="138" Height="33" Click="FolderDec_Click" />
+                <Button x:Name="DriveEnc" Content="Encrypt Drive" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="138" Height="33" Click="DriveEnc_Click" />
+                <Button x:Name="DriveDec" Content="Decrypt Drive" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top" Width="138" Height="33" Click="DriveDec_Click" />
+            </Grid>
+        </Border>
+
+
+
+    </Grid>
+</Window>

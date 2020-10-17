@@ -1,0 +1,5 @@
+C:\Users\user\documents\visual studio 2015\WPF\FileEncryptionServices\EncryptionServices.Net3.5\obj\Debug\EncryptionServices.Net3.5.csprojResolveAssemblyReference.cache
+C:\Users\user\documents\visual studio 2015\WPF\FileEncryptionServices\EncryptionServices.Net3.5\obj\Debug\crypt.g.cs
+C:\Users\user\documents\visual studio 2015\WPF\FileEncryptionServices\EncryptionServices.Net3.5\obj\Debug\App.g.cs
+C:\Users\user\documents\visual studio 2015\WPF\FileEncryptionServices\EncryptionServices.Net3.5\obj\Debug\EncryptionServices.Net3.5_MarkupCompile.cache
+C:\Users\user\documents\visual studio 2015\WPF\FileEncryptionServices\EncryptionServices.Net3.5\obj\Debug\EncryptionServices.Net3.5_MarkupCompile.lref
